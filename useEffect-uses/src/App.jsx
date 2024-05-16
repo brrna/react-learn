@@ -6,21 +6,23 @@ function App() {
   const [name, setName] = useState("");
   const  [lastName, setLastName] = useState("");
 
+  //bu useEffect herhangi bir parametre olmadığı için sayfadaki her aksiyonda render olur
   useEffect(() => {
     console.log("her zaman çalışır")
   })
 
+  //boş array olduğu için sadece ilk ernder edildiğinde çalışır
   useEffect(() => {
-    console.log("yalnızca bşr kez çalışır")
-  }, []) //boş array sayesinde sadece bir kez çalışması sağlanır
+    console.log("ilk render edildiğinde çalışır")
+  }, []) // veri tabanından ürünleri getir ve listele
 
   useEffect(() => {
-    console.log("sayfa ilk render edildiğinde ve name statei değiştiğinde çalışır")
+    console.log("sayfa ilk render edildiğinde ya da name statei değiştiğinde çalışır")
   }, [name])
 
   useEffect(() => {
-    console.log("sayfa ilk render edildiğinde ve lastName statei değiştikten sonra çalılır")
-  }, [lastName])
+    console.log("sayfa ilk render edildiğinde ya da lastName statei ya da name statei değiştikten sonra çalılır")
+  }, [name, lastName])
 
   return (
     <div>
